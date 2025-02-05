@@ -367,6 +367,10 @@ this.tableRef.current.setColumn(columnData, isReloadGrid?);
 
 <embed src="@components/c-table/demos/lazyload.md" />
 
+### 虚拟列表
+
+<embed src="@components/c-table/demos/virtual-list.md" />
+
 ### 列设置
 <embed src="@components/c-table/demos/config-column-basic.md" />
 <embed src="@components/c-table/demos/config-column.md" />
@@ -399,9 +403,11 @@ this.tableRef.current.setColumn(columnData, isReloadGrid?);
 
 ### 解决方案
 
-<embed src="@components/c-table/demos/goods-table.md" />
+<embed src="@components/c-table/demos/setColumn.md" />
 
 <embed src="@components/c-table/demos/front-table2.md" />
+
+<embed src="@components/c-table/demos/goods-table.md" />
 
 [comment]: <> (<embed src="@components/c-table/demos/front-table.md" />)
 

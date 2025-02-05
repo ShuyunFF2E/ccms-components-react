@@ -22,6 +22,7 @@ export default function Group(props) {
     vertical,
     style,
     supportUnSelect,
+    className,
   } = props;
   const [ currentValue, setCurrentValue ] = useState(defaultValue);
 
@@ -66,7 +67,7 @@ export default function Group(props) {
   return (
     <span
       style={style}
-      className={classnames(`${classSelector}-group`, { horizontal, vertical })}
+      className={classnames(`${classSelector}-group`, { horizontal, vertical, [className]: !!className })}
     >
       {radios}
     </span>
@@ -80,6 +81,7 @@ Group.propTypes = {
   disabled: PropTypes.bool,
   style: PropTypes.object,
   supportUnSelect: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 Group.defaultProps = {
@@ -89,4 +91,5 @@ Group.defaultProps = {
   disabled: false,
   style: {},
   supportUnSelect: false,
+  className: undefined,
 };

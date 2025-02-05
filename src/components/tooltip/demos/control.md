@@ -17,7 +17,7 @@ class ToolTipDemo extends React.Component {
 		super(props);
 		this.state = {
 			content: 'click close toolTip',
-			show: true
+			show: false
 		};
 	}
 
@@ -38,7 +38,7 @@ class ToolTipDemo extends React.Component {
 				<Button style={style} onClick={this.onChangeStatus}>
 					{show ? 'Close' : 'Show'} tooltip
 				</Button>
-				<Tooltip content={content} placement="top" visible={show} onVisibleChange={this.onStatusChange}>
+				<Tooltip content={content} placement="top" visible={show} control onVisibleChange={this.onStatusChange}>
 					<span>Click button to {show ? 'close' : 'show'} toolTip.</span>
 				</Tooltip>
 			</div>

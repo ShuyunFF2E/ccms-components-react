@@ -35,6 +35,7 @@ class ModalDemo extends React.Component {
 			title: '基本确认对话框',
 			body: '杭州数云信息技术有限公司是国内领先的全域消费者增长方案提供商',
 			cancelBtnOpts: { type: 'secondary' },
+			isReverseBtn: true,
 			// hasFooter: false,
       //       className: "test",
 			onOk: () => {

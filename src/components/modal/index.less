@@ -21,6 +21,7 @@
 
 @confirm-loading-border: 1px solid #ddd;
 @confirm-loading-border-top: 1px solid @color-white;
+
 .@{modal-prefix-cls} {
   position: fixed;
   top: 0;
@@ -28,6 +29,7 @@
   bottom: 0;
   left: 0;
   z-index: @z-index-modal-mask;
+
   &-mask {
     position: fixed;
     top: 0;
@@ -75,16 +77,19 @@
     opacity: 0;
     transform: scale(0.5);
   }
+
   &-enter-active,
   &-appear-active {
     opacity: 1;
     transform: scale(1);
     transition: opacity 300ms, transform 300ms;
   }
+
   &-exit {
     opacity: 1;
     transform: scale(1);
   }
+
   &-exit-active {
     opacity: 0;
     transform: scale(0.5);
@@ -145,20 +150,24 @@
       width: 8px;
       height: 8px;
     }
+
     &::-webkit-scrollbar-thumb {
       /*滚动条里面小方块*/
       background: @scrollbar-thumb;
       border-radius: @body-border-radius;
+
       &:hover {
         background: @gray-7;
       }
     }
+
     &::-webkit-scrollbar-track {
       /*滚动条里面轨道*/
       width: 8px;
       border-radius: 0;
       // background: @scrollbar-bg;
     }
+
     &::-webkit-scrollbar-corner {
       /*右下角按钮样式*/
       background: @scrollbar-bg;
@@ -191,6 +200,13 @@
       justify-content: flex-end;
     }
 
+    &-reverse {
+      display: flex;
+      justify-content: right;
+      flex-direction: row-reverse;
+      gap: 16px;
+    }
+
     .@{modal-prefix-cls}-confirm-btn {
       margin-left: 16px;
     }
@@ -220,6 +236,7 @@
       border-radius: @body-border-small-radius;
     }
   }
+
   &&-middle {
     .@{modal-prefix-cls}-header {
       border-radius: @body-border-middle-radius @body-border-middle-radius 0 0;
@@ -280,7 +297,7 @@
     line-height: 24px;
     vertical-align: text-top;
     margin-right: 8px;
-    padding: 0!important;
+    padding: 0 !important;
   }
 
   .confirm-style {

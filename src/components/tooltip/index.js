@@ -39,6 +39,8 @@ class Tooltip extends Component {
         },
       );
       this.target = this.tipRef.current.firstElementChild;
+    } else if (this.props.control) {
+      this.target = this.tipRef.current.firstElementChild;
     }
 
     document.addEventListener('click', this.onClick);
@@ -51,6 +53,9 @@ class Tooltip extends Component {
         this.showTips({ target: this.tipRef.current.firstElementChild });
       } else {
         this.closeTips();
+      }
+      if (this.props.control) {
+        this.setState({ visible });
       }
     }
   }
@@ -82,9 +87,11 @@ class Tooltip extends Component {
       )
       || this.props.closeTooltipExec(path)
     ) {
-      this.setState({ visible: false }, () => {
-        this.props.onVisibleChange(this.state.visible);
-      });
+      if (!this.props.control) {
+        this.setState({ visible: false }, () => {
+          this.props.onVisibleChange(this.state.visible);
+        });
+      }
     }
   };
 
@@ -113,9 +120,11 @@ class Tooltip extends Component {
     if (content && (visible || visible === undefined)) {
       setTimeout(() => {
         this.target = this.getTooltipParent(target);
-        this.setState({ visible: true }, () => {
-          this.props.onVisibleChange(this.state.visible);
-        });
+        if (!this.props.control) {
+          this.setState({ visible: true }, () => {
+            this.props.onVisibleChange(this.state.visible);
+          });
+        }
       }, mouseEnterDelay);
     }
   };
@@ -132,9 +141,11 @@ class Tooltip extends Component {
     }
     if (!visible) {
       setTimeout(() => {
-        this.setState({ visible: false }, () => {
-          this.props.onVisibleChange(this.state.visible);
-        });
+        if (!this.props.control) {
+          this.setState({ visible: false }, () => {
+            this.props.onVisibleChange(this.state.visible);
+          });
+        }
       }, mouseLeaveDelay);
     }
   };
@@ -216,6 +227,7 @@ Tooltip.propTypes = {
   alwaysShow: PropTypes.bool,
   containerEle: PropTypes.any,
   showArrow: PropTypes.bool,
+  control: PropTypes.bool,
 };
 
 Tooltip.defaultProps = {
@@ -233,6 +245,7 @@ Tooltip.defaultProps = {
   alwaysShow: false,
   containerEle: null,
   showArrow: true,
+  control: false,
 };
 
 export default Tooltip;

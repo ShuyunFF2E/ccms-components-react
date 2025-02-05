@@ -6,12 +6,20 @@ import Icon from '../../icon';
 import Popover from '../../popover';
 import Checkbox from '../../checkbox';
 import Button from '../../button';
+import Modal from '../../modal';
 // import { setConfig } from '../util';
 
 const columnConfigPanelHeight = 466;
 const popoverIgnoreClass = `${tablePrefixCls}-config-column-button`;
 
 class ColumnConfig extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
+
   onDragEnd = (fromIndex, toIndex) => {
     const { hideConfigColumns, originColumnData, disabledSortColumns, setOriginColumnData } = this.props;
     // 禁止拖拽和排序的列（只能在首部）
@@ -162,19 +170,33 @@ class ColumnConfig extends Component {
             size="small"
             type="link"
             onClick={() => {
-              if (!defaultConfigColumns?.length) {
-                setOriginColumnData(originConfigColumnData.map(item => ({
-                  ...item,
-                  show: true,
-                  columnChecked: true,
-                })), refreshColumn);
-              } else {
-                setOriginColumnData(originConfigColumnData.map(item => ({
-                  ...item,
-                  show: defaultConfigColumns.includes(item.dataIndex),
-                  columnChecked: defaultConfigColumns.includes(item.dataIndex),
-                })), refreshColumn);
-              }
+              Modal.confirm({
+                title: '确定恢复为系统默认设置吗？',
+                body: '确定后，已编辑内容将不会被保存',
+                outerClassName: `${tablePrefixCls}-modal-outer`,
+                isReverseBtn: true,
+                onOk: () => {
+                  if (!defaultConfigColumns?.length) {
+                    setOriginColumnData(originConfigColumnData.map(item => ({
+                      ...item,
+                      show: true,
+                      columnChecked: true,
+                    })), refreshColumn);
+                  } else {
+                    setOriginColumnData(originConfigColumnData.map(item => ({
+                      ...item,
+                      show: defaultConfigColumns.includes(item.dataIndex),
+                      columnChecked: defaultConfigColumns.includes(item.dataIndex),
+                    })), refreshColumn);
+                  }
+                },
+                onClose: () => {
+                  this.setState({visible: true});
+                },
+                onCancel: () => {
+                  this.setState({visible: true});
+                }
+              });
             }}
             className={popoverIgnoreClass}
           >
@@ -189,6 +211,7 @@ class ColumnConfig extends Component {
                 ...item,
                 show: item.columnChecked,
               })), refreshColumn);
+              this.setState({ visible: false });
             }}
             className={popoverIgnoreClass}
           >
@@ -205,6 +228,7 @@ class ColumnConfig extends Component {
                   columnChecked: targetColumn.show,
                 };
               }), refreshColumn);
+              this.setState({ visible: false });
             }}
             className={popoverIgnoreClass}
           >
@@ -240,9 +264,18 @@ class ColumnConfig extends Component {
         contentStyle={{ maxHeight: columnConfigPanelHeight - 24 }}
         containerEle={tableRef.current}
         ignoreClassList={isComplexConfig ? [popoverIgnoreClass] : []}
+        control
+        visible={this.state.visible}
       >
         <Tooltip content="列设置" theme="light" overlayStyle={{ minWidth: 50 }}>
-          <span className={`${tablePrefixCls}-config-icon`} style={isLoading || loadingOpts.loading ? { zIndex: -1 } : {}}>
+          <span
+            className={`${tablePrefixCls}-config-icon`}
+            style={isLoading || loadingOpts.loading ? { zIndex: -1 } : {}}
+            onClick={() => {
+              const { visible } = this.state;
+              this.setState({ visible: !visible });
+            }}
+          >
             <Icon type="config" />
           </span>
         </Tooltip>

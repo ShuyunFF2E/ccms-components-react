@@ -26,6 +26,8 @@ group:
 | footerStyle        | 设置弹出框footer区域样式                 | object              | -       |
 | disabledOk         | 禁用确认按钮                             | boolean             | `false` |
 | className          | 设置弹出框样式名称                       | string              | -       |
+| outerClassName     | 设置最外层mark样式                       | string              | -       |
+| isReverseBtn       | 是否反转确定和取消的位置                   | boolean             | `false`  |
 | hasFooter          | 是否显示底部区域                         | boolean             | `true`  |
 | footer             | modal 底部内容区域                       | string 或 ReactNode | -       |
 | onClose            | 点击右上角关闭按钮时触发的回调           | function            | -       |

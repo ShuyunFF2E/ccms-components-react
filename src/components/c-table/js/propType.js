@@ -83,6 +83,7 @@ export const propTypes = {
   noScroll: PropTypes.bool,
   rcTableConfig: PropTypes.bool,
   configColumnType: PropTypes.oneOf(['default', 'complex']),
+  // unControlledCheck: PropTypes.bool,
 };
 
 export const defaultProps = {
@@ -165,4 +166,5 @@ export const defaultProps = {
   noScroll: false,
   rcTableConfig: {},
   configColumnType: 'default',
+  // unControlledCheck: false,
 };

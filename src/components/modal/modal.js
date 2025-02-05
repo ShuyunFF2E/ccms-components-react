@@ -70,6 +70,7 @@ class Notification extends Component {
     onClose: noop,
     supportDrag: true,
     borderRadiusSize: 'large',
+    isReverseBtn: false,
   };
 
   static propTypes = {
@@ -88,6 +89,7 @@ class Notification extends Component {
     okBtnOpts: PropTypes.object,
     cancelBtnOpts: PropTypes.object,
     hasFooter: PropTypes.bool,
+    isReverseBtn: PropTypes.bool,
     onOk: PropTypes.func,
     onCancel: PropTypes.func,
     onClose: PropTypes.func,
@@ -308,6 +310,7 @@ class Notification extends Component {
     });
   };
 
+
   render() {
     const {
       visible,
@@ -318,6 +321,8 @@ class Notification extends Component {
       headerStyle,
       disabledOk,
       className,
+      outerClassName,
+      isReverseBtn,
       type,
       children,
       title,
@@ -360,7 +365,7 @@ class Notification extends Component {
         <div
           id="mask"
           ref={this.maskRef}
-          className={classnames(`${prefixCls}-modal`, {
+          className={classnames(`${prefixCls}-modal`, outerClassName, {
             'other-area-can-click': !showMask,
             [`${prefixCls}-modal-${borderRadiusSize}`]: borderRadiusSize,
           })}
@@ -428,6 +433,7 @@ class Notification extends Component {
                 disabledOk={disabledOk}
                 showConfirmLoading={showConfirmLoading}
                 infoText={infoText}
+                isReverseBtn={isReverseBtn}
               />
             </div>
           </CSSTransition>
@@ -517,6 +523,7 @@ function ModalFooter({
   cancelBtnOpts,
   hasFooter,
   showConfirmLoading,
+  isReverseBtn,
   onCancel,
   onOk,
   onReset,
@@ -532,9 +539,11 @@ function ModalFooter({
     onReset();
     onCancel();
   };
+
   const footerClass = classnames(`${prefixCls}-modal-footer`, {
     [`${prefixCls}-modal-border`]: type !== 'modal',
     [`${prefixCls}-modal-footer-default`]: !(hasFooter && footer),
+    [`${prefixCls}-modal-footer-reverse`]: isReverseBtn,
   });
   const confirmClass = classnames(`${prefixCls}-modal-confirm-btn`);
   if (!hasFooter) {

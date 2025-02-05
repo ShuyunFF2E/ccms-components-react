@@ -83,6 +83,7 @@ class ModalDemo extends React.Component {
 					size="medium"
 					visible={this.state.visible}
 					showMask={this.state.showMask}
+					isReverseBtn={true}
 					clickMaskCanClose={this.state.clickMaskCanClose}
 					onOk={this.handleOk}
 					onCancel={this.handleCancel}

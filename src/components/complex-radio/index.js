@@ -18,6 +18,7 @@ export default function ComplexRadio(props) {
     titleStyle,
     type,
     borderRadiusSize,
+    className,
     ...otherProps
   } = props;
 
@@ -35,6 +36,7 @@ export default function ComplexRadio(props) {
         [`${classSelector}-card-disabled`]: type === 'card' && props.disabled,
         [`${classSelector}-card-checked`]: type === 'card' && props.checked,
         [`${classSelector}-radius-${borderRadiusSize}`]: true,
+        [className]: !!className,
       })}
       {...otherProps}
     >

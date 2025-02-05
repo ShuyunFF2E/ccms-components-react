@@ -26,6 +26,7 @@ group:
 | textStyle      | 复选框后面的内容样式      | object            | {}     |
 | onChange       | 变化时回调函数          | Function(e:Event) | --     |
 | supportUnSelect       | 变化时回调函数          | Function(e:Event) | --     |
+| className       | RadioGroup 类名          | string | --     |
 
 ### API Radio
 
@@ -36,8 +37,13 @@ group:
 | disabled | 是否禁用                | boolean | false  |
 | desc       | 单选提示         | string 或 React.node  | null    |
 | supportUnSelect       | 是否支持反选         |  boolean  | false   |
+| radioClassName       | Radio 和 ComplexRadio 类名       |  string  | --   |
 
 ### API ComplexRadio
+
+*ComplexRadio 支持 Radio 的基础属性。*
+
+*业务方自己设置 `卡片Radio` 的宽高时，会存在一些样式问题，这是历史原因，需要业务方自行调整，可查看 [自定义卡片式Radio宽高](https://cloud-react.shuyun.com/v1/cloud-react/data/radio#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%A1%E7%89%87%E5%BC%8F-radio-%E7%9A%84%E5%AE%BD%E9%AB%98)*
 
 | 属性           | 说明                    | 类型              | 默认值 |
 | -------------- | ----------------------- | ----------------- | ------ |
@@ -81,3 +87,6 @@ group:
 
 ### 卡片式 Radio
 <embed src="@components/radio/complexDemos/card.md" />
+
+### 自定义卡片式Radio宽高
+<embed src="@components/radio/complexDemos/customSize.md" />

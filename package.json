@@ -123,6 +123,7 @@
     "rimraf": "3.0.2",
     "rollup-plugin-postcss": "4.0.2",
     "umi-lint": "2.0.2",
+    "virtuallist-antd": "^0.8.0-beta.1",
     "yargs": "17.7.2"
   },
   "husky": {

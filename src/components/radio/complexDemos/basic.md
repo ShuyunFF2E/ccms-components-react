@@ -19,6 +19,8 @@ export default function ComplexRadioDemo() {
       <div style={{ marginBottom: 50 }}>
         <h5>标题+头像</h5>
         <ComplexRadio
+          radioClassName="test1"
+          className="test2"
           titleStyle={{ minWidth: 'fit-content' }}
           title="单选文字"
           imgSrc="https://brand-guide.shuyun.com/IAM/52e939494f3b.png"

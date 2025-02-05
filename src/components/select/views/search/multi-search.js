@@ -105,7 +105,15 @@ export default function MultiSearch({
   const hideSelectList = maxTagCount ? selectList.slice(maxTagCount) : [];
 
   return (
-    <div className={`${selector}-multi-search-container`}>
+    <div
+      className={`${selector}-multi-search-container`}
+      onClick={() => {
+        if (searchable) {
+          searchRef.current.querySelector('input').focus();
+          setSearchStatus(true);
+        }
+      }}
+    >
       {selectList?.length ? (
         <>
           <span style={{ width: 0, zIndex: -1, padding: 0, marginLeft: -4, fontSize: 14 }}>-</span>

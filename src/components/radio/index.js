@@ -46,11 +46,12 @@ class Radio extends React.Component {
       textStyle,
       desc,
       supportUnSelect,
+      radioClassName,
       ...otherProps
     } = this.props;
     return (
-      <div className={`${classSelector}-container`}>
-        <label className={classnames(classSelector, className)} style={style}>
+      <div className={classnames(`${classSelector}-container`, { [radioClassName]: !!radioClassName })}>
+        <label className={classnames(classSelector, { [className]: !!className })} style={style}>
           <span className={`${classSelector}-wrapper`} style={radioStyle}>
             <input
               {...otherProps}

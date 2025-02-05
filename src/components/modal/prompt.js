@@ -25,6 +25,8 @@ class Prompt extends React.Component {
     onOk: noop,
     onCancel: noop,
     hasFooter: true,
+    outerClassName: '',
+    isReverseBtn: false,
     className: '',
     footerStyle: {}
   };
@@ -42,6 +44,8 @@ class Prompt extends React.Component {
     onCancel: PropTypes.func,
     hasFooter: PropTypes.bool,
     className: PropTypes.string,
+    outerClassName: PropTypes.string,
+    isReverseBtn: PropTypes.bool,
     footerStyle: PropTypes.object,
   };
 
@@ -195,6 +199,8 @@ class Prompt extends React.Component {
           showConfirmLoading={this.state.showConfirmLoading}
           hasFooter={this.props.hasFooter}
           className={this.props.className}
+          outerClassName={this.props.outerClassName}
+          isReverseBtn={this.props.isReverseBtn}
           infoText={infoText}
         >
           <div>
@@ -248,6 +254,8 @@ function prompt({
   title,
   hasFooter,
   className,
+  outerClassName,
+  isReverseBtn,
   infoText,
   footerStyle,
 }) {
@@ -270,6 +278,8 @@ function prompt({
       iconStyle={iconStyle}
       isShowIcon={isShowIcon}
       hasFooter={hasFooter}
+      outerClassName={outerClassName}
+      isReverseBtn={isReverseBtn}
       footerStyle={footerStyle}
       className={className}
       okText={okText}

@@ -37,26 +37,29 @@ class NestingRadio extends React.Component {
 
   render() {
     return (
-      <Radio.Group
-        value={this.state.parentValue}
-        onChange={this.onParentChange}
-        vertical
-      >
-        <div>
+      <>
+        <Radio.Group
+          value={this.state.parentValue}
+          onChange={this.onParentChange}
+          vertical
+        >
+          <div>
             <Radio value={1}>React</Radio>
-        </div>
-        <Radio value={2}>Vue</Radio>
-        <Radio value={3}>JQuery</Radio>
+          </div>
+          <Radio value={2}>Vue</Radio>
+          <Radio value={3}>JQuery</Radio>
+        </Radio.Group>
         <h2>数据库</h2>
         <Radio.Group
+          className="test"
           value={this.state.childValue}
           onChange={this.onChildChange}
           vertical
         >
-          <Radio value={1}>mysql</Radio>
+          <Radio value={1} radioClassName="test1" className="test2">mysql</Radio>
           <Radio value={2}>mogondb</Radio>
         </Radio.Group>
-      </Radio.Group>
+      </>
     );
   }
 }

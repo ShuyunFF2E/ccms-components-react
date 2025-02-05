@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.@{prefix}-table-modal-outer {
+  z-index: 1031 !important;
+}
+
 .header-bordered-resizable(@index: 1) {
   position: relative;
   background: @blue-1;
@@ -116,6 +120,7 @@
     }
 
     &.@{tablePrefixCls}-support-resize {
+
       // 可见的最后一列
       .@{tablePrefixCls}-resizeable {
         .bordered-resizable(1);
@@ -146,6 +151,7 @@
     }
 
     .@{tablePrefixCls}-scroll-horizontal {
+
       // 可见的最后一列
       th:nth-last-of-type(1):after {
         display: none;
@@ -206,15 +212,14 @@
     }
 
     .@{tablePrefixCls}-row-level-1 {
-      td.@{prefix}-table-row-expand-column + td {
+      td.@{prefix}-table-row-expand-column+td {
         padding-left: 34px;
       }
     }
   }
 
   // 树状表格（多级），展开图标不单独占一列
-  &.@{tablePrefixCls}-support-tree {
-  }
+  &.@{tablePrefixCls}-support-tree {}
 
   // 带有展开行的表格
   &.@{tablePrefixCls}-expand-details {
@@ -293,6 +298,7 @@
     &.@{tablePrefixCls}-support-checkbox {
       .@{tablePrefixCls}-resizeable {
         &:first-child {
+
           &::after,
           .react-resizable-handle-se {
             display: none;
@@ -311,6 +317,7 @@
 
   // 表格支持配置列的展示和隐藏
   &.@{tablePrefixCls}-config-column {
+
     tbody tr td:last-child,
     thead tr th:nth-last-of-type(-n+1) {
       padding-right: 40px;
@@ -348,7 +355,7 @@
     //}
 
     .@{tablePrefixCls}-header colgroup col:not(:last-child) {
-      display: table-column!important;
+      display: table-column !important;
     }
 
     // 带边框表格
@@ -373,13 +380,16 @@
     &.@{tablePrefixCls}-support-resize {
       &.@{tablePrefixCls}-header-bordered {
         .@{tablePrefixCls}-scroll-horizontal {
+
           // 可见的最后一列
           th:nth-last-of-type(2):after {
             display: none;
           }
         }
       }
+
       .@{tablePrefixCls}-resizeable {
+
         // 可见的最后一列
         &:nth-last-of-type(2) {
           .react-resizable-handle-se {
@@ -422,7 +432,7 @@
   min-width: 236px;
   overflow: auto;
   padding: 16px;
-  box-shadow: 0 4px 12px 0 rgba(0,0,0,0.1), 0 0 1px 0 rgba(0,0,0,0.3) !important;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 0 1px 0 rgba(0, 0, 0, 0.3) !important;
   border-radius: 3px;
 
   &::after {
@@ -434,7 +444,7 @@
     flex-direction: column;
     gap: 12px;
 
-    > li {
+    >li {
       width: 180px;
       .text-overflow-ellipsis;
 
@@ -536,7 +546,7 @@
 }
 
 .@{tablePrefixCls}-drag-line {
-  border: 1px solid @blue-4!important;
+  border: 1px solid @blue-4 !important;
 }
 
 .@{tooltipPrefixCls} {

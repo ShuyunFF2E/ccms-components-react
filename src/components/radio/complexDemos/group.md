@@ -25,7 +25,7 @@ export default function ComplexRadioDemo() {
     <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: "wrap" }}>
       <div>
         <h5>标题+头像</h5>
-        <Radio.Group vertical value={value} defaultValue={"E"} onChange={onChange}>
+        <Radio.Group vertical value={value} defaultValue={"E"} onChange={onChange} className="test">
           {radioList.map((item, index) => (
             <ComplexRadio
               title={item.label}

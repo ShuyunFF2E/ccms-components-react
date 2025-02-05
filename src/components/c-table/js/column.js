@@ -8,6 +8,57 @@ import Popover from '../../popover';
 import { isEveryChecked, isSomeChecked } from '../util';
 import { tablePrefixCls } from '../constant';
 
+// function RowCheckbox({ isDisabled, data, updateLeafNodesMap }) {
+//   const [checked, setChecked] = useState(false);
+//   const [indeterminate, setIndeterminate] = useState(false);
+//
+//   useEffect(() => {
+//     if (data?.childNodes) {
+//       const isChecked = !!isEveryChecked(data.childNodes);
+//       const isIndeterminate = !isChecked && isSomeChecked(data.childNodes);
+//       setChecked(isChecked);
+//       setIndeterminate(isIndeterminate);
+//     }
+//   }, [data]);
+//
+//   return (
+//     <Checkbox
+//       checked={checked}
+//       indeterminate={indeterminate}
+//       disabled={isDisabled}
+//       onChange={(_checked) => {
+//         updateLeafNodesMap(_checked);
+//         setChecked(_checked);
+//         setIndeterminate(false);
+//       }}
+//     />
+//   );
+// }
+
+// function RowRadio({ radioVal, data, isDisabled, onChange }) {
+//   const [checked, setChecked] = useState(false);
+//
+//   useEffect(() => {
+//     if (data?.childNodes) {
+//       const isChecked = !!isEveryChecked(data.childNodes);
+//       console.log(isChecked);
+//       setChecked(isChecked);
+//     }
+//   }, [data]);
+//
+//   return (
+//     <Radio
+//       disabled={isDisabled}
+//       value={radioVal}
+//       checked={checked}
+//       onChange={() => {
+//         onChange();
+//         setChecked(true);
+//       }}
+//     />
+//   );
+// }
+
 export default class Column {
   constructor(_this) {
     this._this = _this;
@@ -248,16 +299,15 @@ export default class Column {
               onConfirmClick={this.onFilterConfirm}
               onVisibleChange={visible => {
                 _this.setState({ lineHeightFilter: visible }, () => {
-                    this.setColumnData();
-                })
+                  this.setColumnData();
+                });
               }}
             >
               <Icon
                 className={`filter-icon ${
                   (_this.state.filterValue.length || _this.state.lineHeightFilter) && 'has-filter-value'
                 }
-                `
-              }
+                `}
                 type="filter"
               />
             </Popover>

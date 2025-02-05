@@ -23,6 +23,7 @@ group:
 | theme           | 主题, 可选 `dark` `light` `error`                                                                                                                         | string   | dark          |
 | trigger         | 触发方式 `hover` `click`                                                                                                                                  | string   | hover         |
 | visible         | 用于手动控制浮层显隐                                                                                                                                            | boolean  | undefined             |
+| control         | 配置成true，结合visible使用，实现手动控制浮层显隐 | boolean | false |
 | onVisibleChange | 显示隐藏的回调                                                                                                                                               | (visible: boolean) => void  | () => {}       |
 | container       | <del>渲染节点，默认渲染到 body 上(如果指定容器，将会给指定容器添加 position:relative)，<b style="color: red">已废弃</b></del>                                                        | function | document.body |
 | mouseEnterDelay | 鼠标移入后延时多少才显示 Tooltip，单位：毫秒                                                                                                                            | number   | 1             |
@@ -36,12 +37,20 @@ group:
 
  ### 代码演示 
 
-<embed src="@components/tooltip/demos/control.md" /> 
-
+### 位置
 <embed src="@components/tooltip/demos/placement.md" /> 
 
+### 受控
+<embed src="@components/tooltip/demos/control.md" />
+
+### 主题
 <embed src="@components/tooltip/demos/theme.md" /> 
 
+### 触发方式
 <embed src="@components/tooltip/demos/tigger.md" />
 
+### 配置箭头显隐
 <embed src="@components/tooltip/demos/showArrow.md" />
+
+### 解决方案
+<embed src="@components/tooltip/demos/select.md" />
