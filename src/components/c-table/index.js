@@ -265,10 +265,30 @@ class CTable extends Component {
     this.updateSelectedNodes();
 
     this.column.setColumnData();
-
+    this.upgradePingedRight();
     this.setHeaderStyle();
     this.setFixedStyle();
     this.setFooterHeight();
+  };
+
+  // fix: 解决列固定阴影，偶发性不展示，滚动列才展示
+  upgradePingedRight = () => {
+    setTimeout(() => {
+      if (this.ref.current) {
+        const bodyEle = this.ref.current.querySelector(
+          `.${tablePrefixCls}-body`,
+        );
+        if (bodyEle) {
+          const { scrollWidth, clientWidth, scrollLeft } = bodyEle;
+          const rootDom = this.ref.current.querySelector(`.${tablePrefixCls}`);
+          if (scrollLeft < scrollWidth - clientWidth) {
+            rootDom.classList.add(`${tablePrefixCls}-ping-right`);
+          } else {
+            rootDom.classList.remove(`${tablePrefixCls}-ping-right`);
+          }
+        }
+      }
+    });
   };
 
   /**
